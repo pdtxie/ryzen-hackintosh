@@ -67,7 +67,7 @@ Ethernet:
 
 Lilu:
 - Lilu
-~~- NVMeFix~~ (kernel panics with this on)
+- ~~NVMeFix~~ (kernel panics with this on)
 - VirtualSMC
 - WhateverGreen
 - SMCAMDProcessor
