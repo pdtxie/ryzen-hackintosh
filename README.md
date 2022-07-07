@@ -7,7 +7,7 @@
 - 32gb ram
 - 970 pro + 970 evo (macos uses 970 evo)
 - asus x570i 
-- BCM94350ZAE wifi card
+- BCM94350ZAE wifi card – i heavily recommend *against* this card, even though it's a supported airport card, it's *not-native* and has caused me more problems than it should have – spend a bit more money and buy a better one
 
 **i am not responsible if you mess up your computer using any of my files**
 
@@ -27,25 +27,24 @@ ___
 - imessage + text message forwarding
 - EDIT: audio ~~(voodoohda not injecting in 11.4, using applealc - no mic)~~ voodoo is injected throgh /l/e so mic works, but audio definitely worse than applealc
 - usb (usb mapped)
-- EDIT: ~~restrict events - dumb memory error for macpro7,1 is gone :)~~ REMOVED - DON'T USE RESTRICT EVENTS IF YOU WANT SYSTEM UPDATES!
+- EDIT: ~~restrict events~~ REMOVED - DON'T USE RESTRICT EVENTS IF YOU WANT SYSTEM UPDATES!
 - continuity features (airdrop, continuity camera/sketch/markup)
 - good amd cpu performance (enable Shaneee's fix pat kernel patch and disable algrey's one) (note: this might break nvidia gpu support or something)
 
 ---
 ### what doesn't work
-- **i have been getting frequently nvme kernel panics which didn't previously occur on older oc/bs versions! most likely due to incompatability with the samsung nvme drives :(**
 - sidecar (no igpu)
 - watch unlock - seems like watch unlock is a bit of a hit or miss with normal macs too so ¯\_(ツ)_/¯
-- apple pay - haven't tested
+- apple pay - no t2 chip will never work
 - ~~look up / dictionary thing ?~~ ok fixed i copied the .dictionary files from my laptop 
 - ~~perfect wake from sleep, but requires two keyboard taps, one to wake the system, and the second to wake the monitor, i think i might be able to fix this with an acpi device or something~~ tried to fix but doesn't seem fixable
 
 ---
 ### todo
-~~- fix slow opencore boot (10sec from post to opencore)~~ FIXED! DISABLE SATA IN BIOS AND NOW POST TO OPENCORE = <1sec
+- ~~fix slow opencore boot (10sec from post to opencore)~~ FIXED! DISABLE SATA IN BIOS AND NOW POST TO OPENCORE = <1sec
 - ~~fix occasional freezes (although seems to be bs issue)~~ doesn't seem to be happening after i did something with swap
 - manually make ssdts
-- boot hangs at "ignoring kext cache invocation from early boot"\ -> bigsur issue though?
+- boot hangs at "ignoring kext cache invocation from early boot"\ -> bigsur issue though? - if you upgrade to monterey, this issue is fixed and boot time is about ~2 seconds from bios!
 
 ___
 
@@ -58,17 +57,17 @@ ___
 ---
 ### kexts
 Wifi and Bluetooth:
-- AirportBrcmFixup
-- BrcmBluetoothInjector
+- AirportBrcmFixup (remember to disable the 4360 injector, no longer in use 11+)
+- BrcmBluetoothInjector (**for monterey use BlueToolFixup instead, remove this injector**)
 - BrcmFirmwareData
 - BrcmPatchRAM3
 
 Ethernet:
-- SmallTreeIntel82576
+- SmallTreeIntel82576 (**doesn't work in monterey**)
 
 Lilu:
 - Lilu
-- NVMeFix (disabled to test if it still kernel panics)
+~~- NVMeFix~~ (kernel panics with this on)
 - VirtualSMC
 - WhateverGreen
 - SMCAMDProcessor
